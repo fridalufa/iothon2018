@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ]
     exit
 fi
 
-$CCNL_BASE/ccn-lite-relay -e eth0 -v trace &
+$CCNL_BASE/ccn-lite-relay -e eth0 > /dev/null 2>&1 &
 
 FACEID=`$CCNL_BASE/ccn-lite-ctrl newETHface any $MAC_NODE 2049 | $CCNL_BASE/ccn-lite-ccnb2xml | grep FACEID | sed -e 's/^[^0-9]*\([0-9]\+\).*/\1/'`
 
