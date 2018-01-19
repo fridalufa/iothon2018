@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^4.0.0",
     "evrythng": "^4.7.2"
   }
 }
