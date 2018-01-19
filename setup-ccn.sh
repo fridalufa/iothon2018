@@ -10,7 +10,12 @@ if [ "$EUID" -ne 0 ]
     exit
 fi
 
+# Kill running relays
+pkill ccn-lite-relay
+
 $CCNL_BASE/ccn-lite-relay -e eth0 > /dev/null 2>&1 &
+
+sleep 2
 
 FACEID=`$CCNL_BASE/ccn-lite-ctrl newETHface any $MAC_NODE 2049 | $CCNL_BASE/ccn-lite-ccnb2xml | grep FACEID | sed -e 's/^[^0-9]*\([0-9]\+\).*/\1/'`
 
